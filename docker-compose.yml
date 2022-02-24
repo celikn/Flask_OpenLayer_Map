@@ -1,0 +1,58 @@
+version: "3.7"
+
+services:
+  # Define our individual services
+  flask:
+    # Build the flask service using the Dockerfile in the flask directory
+    build: ./flask
+    # Give our flask container a friendly name
+    container_name: getir_flask
+    # Instruct Docker to always restart the service
+    restart: always
+    # Use environment to set any environment variables
+    environment:
+      - APP_NAME= GetirApp
+    # Any ports listed using `expose` will only be accessible to internal services/containers
+    expose:
+      - 5000
+    ports:
+      - 5000:5000
+    command: python app.py 
+  
+  geoserver:
+    # Build the flask service using the Dockerfile in the flask directory
+    build: ./geoserver
+    # Give our flask container a friendly name
+    container_name: getir_geoserver
+    # Instruct Docker to always restart the service
+    restart: always
+    # Use environment to set any environment variables
+    volumes:
+      - geoserver-data:/opt/geoserver/data_dir
+    expose:
+      - 8090
+    ports:
+      - "8090:8080"
+    environment:
+      - GEOSERVER_ADMIN_PASSWORD=geoserver
+      - GEOSERVER_ADMIN_USER=admin
+
+  postgis:
+    build: ./postgis  
+    container_name: getir_db
+    restart: on-failure
+    expose:
+      - 11117
+    ports:
+      - 11117:5432
+    #volumes:
+    #- ./postgres-db-data:/var/lib/postgresql/data
+    environment: 
+      POSTGRES_USER: postgres #docker 
+      POSTGRES_DB: postgres #template_postgis
+      POSTGRES_PASSWORD: docker
+ 
+ 
+volumes:
+  geoserver-data:
+    external: true 

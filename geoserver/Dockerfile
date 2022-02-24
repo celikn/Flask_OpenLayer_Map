@@ -1,0 +1,2 @@
+FROM kartoza/geoserver
+
