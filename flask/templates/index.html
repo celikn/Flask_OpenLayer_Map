@@ -11,18 +11,250 @@
 <script src="https://unpkg.com/ol-geocoder"></script>
 
 <script src="{{url_for('static', filename='javascript/config.js')}}"></script>
+<script src="{{url_for('static', filename='javascript/helper.js')}}"></script>
+
 
 <div class="row-fluid">
   <div class="span12">
-    <div id="map" class="map" tabindex="0"></div>
+    <div style="height: 70%; width: 97vw" id="map" class="map" tabindex="0">
+      <div id="overlayForUploadedFeatureLabelTooltip" class="overlayForUploadedFeatureLabelTooltip"></div>
+    </div>
+    <div style="font-weight:bold"> Legend</div>
+    <div style="display: inline-block">
+      <div>Isochrones</div>
+      <div><img id="legend_isochrones" class="legend_isochrones" /></div>
+    </div>
+    <div style="display: inline-block">
+      <div>Adana Nufus Yogunlugu</div>
+      <div><img id="legend_nufusyogunluk" class="legend_nufusyogunluk" /></div>
+    </div>
+
+    <div style="display: inline-block">
+      <div>Amsterdam Nufus Yogunlugu</div>
+      <div><img id="legend_nufusyogunluk_amsterdam" class="legend_nufusyogunluk_amsterdam" /></div>
+    </div>
+    <div style="display: inline-block">
+      <table class="tableizer-table">
+        <caption>Adana Dissolved Edilmiş Kapsama Oranları</caption>
+        <thead>
+          <tr class="tableizer-firstrow">
+            <th>AA_MINS</th>
+            <th>AA_MODE</th>
+            <th>Grid Count</th>
+            <th>Nufus Yoğ. Top.</th>
+            <th>Kapsama Oranı</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>5</td>
+            <td>driving-car</td>
+            <td>174</td>
+            <td>683042.71</td>
+            <td>0.278</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>driving-car</td>
+            <td>466</td>
+            <td>1080479.51</td>
+            <td>0.439</td>
+          </tr>
+          <tr>
+            <td>15</td>
+            <td>driving-car</td>
+            <td>680</td>
+            <td>1191205.09</td>
+            <td>0.484</td>
+          </tr>
+          <tr>
+            <td>20</td>
+            <td>driving-car</td>
+            <td>856</td>
+            <td>1246434.01</td>
+            <td>0.507</td>
+          </tr>
+          <tr>
+            <td>25</td>
+            <td>driving-car</td>
+            <td>1003</td>
+            <td>1401788.89</td>
+            <td>0.570</td>
+          </tr>
+          <tr>
+            <td>30</td>
+            <td>driving-car</td>
+            <td>1200</td>
+            <td>1481345.53</td>
+            <td>0.602</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="display: inline-block"> </div>
+    <div style="display: inline-block">
+      <table class="tableizer-table">
+        <caption>Amsterdam Dissolved Edilmiş Kapsama Oranları (Her aday nokta için)</caption>
+        <thead>
+          <tr class="tableizer-firstrow">
+            <th>Candidate</th>
+            <th>AA_MINS</th>
+            <th>AA_MODE</th>
+            <th>Grid Count</th>
+            <th>Nufus Yoğ. Top.</th>
+            <th>Kapsama Oranı</th>
+            <th>Candidate</th>
+            <th>AA_MINS</th>
+            <th>AA_MODE</th>
+            <th>Grid Count</th>
+            <th>Nufus Yoğ. Top.</th>
+            <th>Kapsama Oranı</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>5</td>
+            <td>cycling-regular</td>
+            <td>50</td>
+            <td>304988</td>
+            <td>0.183</td>
+            <td>1</td>
+            <td>20</td>
+            <td>cycling-regular</td>
+            <td>231</td>
+            <td>1089361</td>
+            <td>0.654</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>5</td>
+            <td>cycling-regular</td>
+            <td>51</td>
+            <td>330183</td>
+            <td>0.198</td>
+            <td>2</td>
+            <td>20</td>
+            <td>cycling-regular</td>
+            <td>230</td>
+            <td>1139728</td>
+            <td>0.685</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>5</td>
+            <td>cycling-regular</td>
+            <td>53</td>
+            <td>320530</td>
+            <td>0.193</td>
+            <td>3</td>
+            <td>20</td>
+            <td>cycling-regular</td>
+            <td>220</td>
+            <td>1081802</td>
+            <td>0.65</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>10</td>
+            <td>cycling-regular</td>
+            <td>117</td>
+            <td>666617</td>
+            <td>0.4</td>
+            <td>1</td>
+            <td>25</td>
+            <td>cycling-regular</td>
+            <td>287</td>
+            <td>1300283</td>
+            <td>0.781</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>10</td>
+            <td>cycling-regular</td>
+            <td>116</td>
+            <td>716619</td>
+            <td>0.43</td>
+            <td>2</td>
+            <td>25</td>
+            <td>cycling-regular</td>
+            <td>296</td>
+            <td>1370420</td>
+            <td>0.823</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>10</td>
+            <td>cycling-regular</td>
+            <td>122</td>
+            <td>693923</td>
+            <td>0.417</td>
+            <td>3</td>
+            <td>25</td>
+            <td>cycling-regular</td>
+            <td>283</td>
+            <td>1326424</td>
+            <td>0.797</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>15</td>
+            <td>cycling-regular</td>
+            <td>178</td>
+            <td>905925</td>
+            <td>0.544</td>
+            <td>1</td>
+            <td>30</td>
+            <td>cycling-regular</td>
+            <td>340</td>
+            <td>1481131</td>
+            <td>0.89</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>15</td>
+            <td>cycling-regular</td>
+            <td>173</td>
+            <td>958463</td>
+            <td>0.576</td>
+            <td>2</td>
+            <td>30</td>
+            <td>cycling-regular</td>
+            <td>348</td>
+            <td>1516856</td>
+            <td>0.911</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>15</td>
+            <td>cycling-regular</td>
+            <td>175</td>
+            <td>922517</td>
+            <td>0.554</td>
+            <td>3</td>
+            <td>30</td>
+            <td>cycling-regular</td>
+            <td>343</td>
+            <td>1505497</td>
+            <td>0.904</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
   </div>
+
 </div>
+
+
 
 <script>
 
-  var bingKey=config.bingKey;  // big key eklemeyi unutma .)
-  var map = new ol.Map({
+  var bingKey = config.bingKey;  // big key eklemeyi unutma .)
 
+  // Map initialization 
+  var map = new ol.Map({
     layers: [
       new ol.layer.Tile({
         source: new ol.source.OSM()
@@ -35,14 +267,15 @@
       attributionOptions: /** @type {olx.control.AttributionOptions} */ ({
         collapsible: false
       })
-    }).extend([new ol.control.ScaleLine(), ]), 
-    
+    }).extend([new ol.control.ScaleLine(),]),
+
     view: new ol.View({
       center: [0, 0],
       zoom: 2
     })
   });
 
+  // Base layer group for map
   var basedGroup = new ol.layer.Group({
     // A layer must have a title to appear in the layerswitcher
     title: 'Base maps',
@@ -72,153 +305,512 @@
     // Adding a 'fold' property set to either 'open' or 'close' makes the group layer
     // collapsible
     fold: 'open',
-    layers: [
-      new ol.layer.Tile({
-        title: 'USA Eyaletler',
-        extent: [-13884991, 2870341, -7455066, 6338219],
-        source: new ol.source.TileWMS({
-          url: 'https://ahocevar.com/geoserver/wms',
-          params: { 'LAYERS': 'topp:states', 'TILED': true },
-          serverType: 'geoserver',
-          // Countries have transparency, so do not fade tiles:
-          transition: 0,
-        }),
-      }),
-
-      new ol.layer.Image({
-        // A layer must have a title to appear in the layerswitcher
-        title: 'Countries',
-        source: new ol.source.ImageArcGISRest({
-          ratio: 1,
-          params: { LAYERS: 'show:0' },
-          url:
-            'https://ons-inspire.esriuk.com/arcgis/rest/services/Administrative_Boundaries/Countries_December_2016_Boundaries/MapServer'
-        })
-      }),
-      new ol.layer.Group({
-        // A layer must have a title to appear in the layerswitcher
-        title: 'Census',
-        fold: 'open',
-        layers: [
-          new ol.layer.Image({
-            // A layer must have a title to appear in the layerswitcher
-            title: 'Local Authority Districts December 2011 Boundaries',
-            source: new ol.source.ImageArcGISRest({
-              ratio: 1,
-              params: { LAYERS: 'show:0' },
-              url:
-                'https://ons-inspire.esriuk.com/arcgis/rest/services/Census_Boundaries/Census_Merged_Local_Authority_Districts_December_2011_Boundaries/MapServer'
-            })
-          }),
-
-        ]
-      })
-    ]
+    layers: []
   })
+  
+  map.addLayer(basedGroup)
+  //map.addLayer(overLayesGroup)
 
 
-
+  // Layer Switcher initialization
   var layerSwitcher = new ol.control.LayerSwitcher({
     tipLabel: 'Legand', // Optional label for button
     groupSelectStyle: 'children' // Can be 'children' [default], 'group' or 'none'
   });
   map.addControl(layerSwitcher);
-
   layerSwitcher.showPanel();
-  map.addLayer(basedGroup)
-  map.addLayer(overLayesGroup)
-  map.addControl(layerSwitcher);
+
+  // Button for zooming Adana
+  var zoomToExtentControlAdana = new ol.control.ZoomToExtent({
+    className: "adana-zoom-extent", //'ol-zoom-extent'
+    tipLabel: "Haritayı Adana'ya Merkezle",
+    extent: ol.proj.transformExtent(
+      [24, 36, 48, 42],
+      "EPSG:4326",
+      "EPSG:3857"
+    ),
+  });
+
+
+  // Button for zooming Amsterdam
+  var zoomToExtentControlAmsterdam = new ol.control.ZoomToExtent({
+    className: "amsterdam-zoom-extent", //'ol-zoom-extent'
+    tipLabel: "Haritayı Amsterdam'a Merkezle",
+    extent: ol.proj.transformExtent(
+      [4.5, 52, 5, 53],
+      "EPSG:4326",
+      "EPSG:3857"
+    ),
+  });
+
+
+  // Map Overview
+  var overviewMapControl = new ol.control.OverviewMap({
+    // see in overviewmap-custom.html to see the custom CSS used
+    className: "ol-overviewmap ol-custom-overviewmap",
+    layers: [
+      new ol.layer.Tile({
+        source: new ol.source.BingMaps({
+          key: bingKey,
+          imagerySet: "RoadOnDemand",
+          // use maxZoom 19 to see stretched tiles instead of the BingMaps
+          // "no photos at this zoom level" tiles
+          // maxZoom: 19
+        }),
+      }),
+    ],
+    collapseLabel: "\u00BB",
+    label: "\u00AB",
+    collapsed: false,
+  });
+
+
+  // Bing place Searcher
+  //Instantiate with some options and add the Control
+  var bingSearchGeocoder = new Geocoder("nominatim", {
+    provider: "bing",
+    lang: "en-US",
+    placeholder: "Yerleşim Yeri Arayın",
+    limit: 5,
+    key: bingKey,
+    keepOpen: false,
+    debug: true,
+  });
+
+  // I don't want/need Geocoder layer to be visible
+  bingSearchGeocoder.getLayer().setVisible(false);
+
+  //Listen when an address is chosen
+  bingSearchGeocoder.on("addresschosen", function (evt) {
+    var feature = evt.feature;
+    var coord = evt.coordinate;
+
+    // application specific
+    //app.addMarker(feature, coord);
+  });
+
+
+  map.addControl(overviewMapControl);
+  map.addControl(zoomToExtentControlAdana);
+  map.addControl(zoomToExtentControlAmsterdam);
+  map.addControl(bingSearchGeocoder);
+
+
+ 
+  // Adding WMS Legend to Map 
+  const updateLegend = function (resolution, layerSource, legendId) {
+    const graphicUrl = layerSource.getLegendUrl(resolution);
+    const img = document.getElementById(legendId);
+    img.src = graphicUrl;
+  }
+
+  // variable for legend
+  const resolution = map.getView().getResolution();
+
+
+  // -----------------------------Layers for Adana--------------------------
+  // Add Group Layer for Adana
+  var adanaGroup = new ol.layer.Group({
+    layers: [],
+    title: 'Adana Veri Katmanaları',
+  });
+
+  map.addLayer(adanaGroup);
+
+
+  // Adana Yol
+  var wms_source_adana_yollar = new ol.source.TileWMS({
+    url: 'http://localhost:8090/geoserver/Getir/wms',
+    params: {
+      'LAYERS': 'Getir:adana_osm_yollar'
+    }
+  });
+  var wms_layer_adana_osm_yollar = new ol.layer.Tile({
+    title: "adana_osm_yollar",
+    source: wms_source_adana_yollar
+
+  });
+
+  //Adana Isochrones
+  var wms_source_adana_merged_isochrones = new ol.source.TileWMS({
+    url: 'http://localhost:8090/geoserver/Getir/wms',
+    params: {
+      'LAYERS': 'Getir:adana_merged_isochrones'
+    }
+  });
+  var wms_layer_adana_merged_isochrones = new ol.layer.Tile({
+    title: "adana_merged_isochrones",
+    source: wms_source_adana_merged_isochrones
+
+  });
 
 
 
-  // Additional Controls
-  var zoomToExtentControl = new ol.control.ZoomToExtent({
-            className: "adana-zoom-extent", //'ol-zoom-extent'
-            tipLabel: "Haritayı Merkezle",
-            extent: ol.proj.transformExtent(
-                [24, 36, 48, 42],
-                "EPSG:4326",
-                "EPSG:3857"
-            ),
-        });
+  //Adana Nufus Yogunlugu
+  var wms_source_adana_nufus_yogunlugu = new ol.source.TileWMS({
+    url: 'http://localhost:8090/geoserver/Getir/wms',
+    params: {
+      'LAYERS': 'Getir:adana_nufusyogunlugu_th50'
+    }
+  });
+  var wms_layer_adana_nufus_yogunlugu = new ol.layer.Tile({
+    title: "adana_nufus_yogunlugu",
+    source: wms_source_adana_nufus_yogunlugu
+  });
 
-        var overviewMapControl = new ol.control.OverviewMap({
-            // see in overviewmap-custom.html to see the custom CSS used
-            className: "ol-overviewmap ol-custom-overviewmap",
-            layers: [
-                new ol.layer.Tile({
-                    source: new ol.source.BingMaps({
-                        key:bingKey,
-                        imagerySet: "RoadOnDemand",
-                        // use maxZoom 19 to see stretched tiles instead of the BingMaps
-                        // "no photos at this zoom level" tiles
-                        // maxZoom: 19
-                    }),
-                }),
-            ],
-            collapseLabel: "\u00BB",
-            label: "\u00AB",
-            collapsed: false,
-        });
+  adanaGroup.getLayers().push(wms_layer_adana_osm_yollar);
+  adanaGroup.getLayers().push(wms_layer_adana_nufus_yogunlugu);
+  adanaGroup.getLayers().push(wms_layer_adana_merged_isochrones);
+  layerSwitcher.renderPanel()
 
-        //Instantiate with some options and add the Control
-        var bingSearchGeocoder = new Geocoder("nominatim", {
-            provider: "bing",
-            lang: "en-US",
-            placeholder: "Yerleşim Yeri Arayın",
-            limit: 5,
-            key: bingKey,
-            keepOpen: false,
-            debug: true,
-        });
+  // Adding Legend
+  updateLegend(resolution, wms_source_adana_merged_isochrones, 'legend_isochrones');
+  updateLegend(resolution, wms_source_adana_nufus_yogunlugu, 'legend_nufusyogunluk');
 
-        // I don't want/need Geocoder layer to be visible
-        bingSearchGeocoder.getLayer().setVisible(false);
 
-        //Listen when an address is chosen
-        bingSearchGeocoder.on("addresschosen", function (evt) {
-            var feature = evt.feature;
-            var coord = evt.coordinate;
+  //// Add vector layer style // Source:https://stackoverflow.com/questions/37816635/set-style-zoom-level-openlayers-3
 
-            // application specific
-            //app.addMarker(feature, coord);
-        });
+  // Adana Getir Locations
+  const vectorSource_Adana_GetirLocations = new ol.source.Vector({
+    format: new ol.format.GeoJSON(),
+    url: function (extent) {
+      return "http://localhost:8090/geoserver/Getir/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Getir%3Agetir_adana_servis_locations&maxFeatures=50&outputFormat=application%2Fjson&srsname=EPSG:4326&"
+    },
+    strategy: ol.loadingstrategy.bboxStrategy,
+  });
 
-        map.addControl(overviewMapControl);
-        map.addControl(zoomToExtentControl);
-        map.addControl(bingSearchGeocoder);
+  const vector_Adana_GetirLocations = new ol.layer.Vector({
+    title: 'adana_getir_service_locations',
+    source: vectorSource_Adana_GetirLocations,
+    style: function (feature, resolution) {
+      var text = resolution < 5000 ? feature.get('id') : '';
+      return new ol.style.Style({
+        text: new ol.style.Text({
+          scale: 1.5,
+          text: text,
+          fill: new ol.style.Fill({
+            color: '#3399CC'
+          }),
+          stroke: new ol.style.Stroke({
+            color: '#fff',
+            width: 7
+          })
 
-    // $.ajax('https://geo.anantara.cl/maps/kml/2012-02-10.kml', {
-    //     type: 'GET',
-    //     headers: {  'Access-Control-Allow-Origin': 'https://geo.anantara.cl'},
-    //     contentType: 'application/vnd.google-earth.kml+xml',
-    //     crossDomain:true,
-    //     success: function (response) {
+        })
+      });
+    }
+  });
 
-    //         features = formatKML.readFeatures(response, {
-    //             dataProjection: 'EPSG:4326',
-    //             featureProjection: 'EPSG:3857'
-    //         });
 
-    //         sourceVector.addFeatures(features);
-    //     }
-    // });
+  // Adana Border
+  const vectorSource_Adana_Border = new ol.source.Vector({
+    format: new ol.format.GeoJSON(),
+    url: function (extent) {
+      return "http://localhost:8090/geoserver/Getir/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Getir%3Aadana_border&maxFeatures=50&outputFormat=application%2Fjson&srsname=EPSG:4326&"
+    },
+    strategy: ol.loadingstrategy.bboxStrategy,
+  });
+
+  const vector_Adana_Border = new ol.layer.Vector({
+    title: 'adana_border',
+    source: vectorSource_Adana_Border,
+    style: new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: 'rgba(0, 0, 255, 1.0)',
+        width: 2,
+      }),
+    }),
+  });
+
+  adanaGroup.getLayers().push(vector_Adana_GetirLocations);
+  adanaGroup.getLayers().push(vector_Adana_Border);
+  layerSwitcher.renderPanel()
+
+
+  // -----------------------------Layers for Amsterdam--------------------------
+
+  // Add Group Layer for Amsterdam
+  var amsterdamGroup = new ol.layer.Group({
+    layers: [],
+    title: 'Amsterdam Veri Katmanaları',
+  });
+  map.addLayer(amsterdamGroup);
+
+
+
+  // Adana Yol
+  var wms_source_amsterdam_yollar = new ol.source.TileWMS({
+    url: 'http://localhost:8090/geoserver/Getir/wms',
+    params: {
+      'LAYERS': 'Getir:amsterdam_major_streets'
+    }
+  });
+  var wms_layer_amsterdam_osm_yollar = new ol.layer.Tile({
+    title: "amsterdam_ana_yollar",
+    source: wms_source_amsterdam_yollar
+
+  });
+
+
+  //Amsterdam Nufus
+  var wms_source_amsterdam_nufusyogunlugu = new ol.source.TileWMS({
+    url: 'http://localhost:8090/geoserver/Getir/wms',
+    params: {
+      'LAYERS': 'Getir:amsterdam_nufus_yogunlugu_th350'
+    }
+  });
+  var wms_layer_amsterdam_nufusyogunlugu = new ol.layer.Tile({
+    title: "amsterdam_nufus_yogunlugu",
+    source: wms_source_amsterdam_nufusyogunlugu
+
+  });
+
+  //Amsterdam Isocrones
+  var wms_source_amsterdam_merged_isochrones_candidate1 = new ol.source.TileWMS({
+    url: 'http://localhost:8090/geoserver/Getir/wms',
+    params: {
+      'LAYERS': 'Getir:amsterdam_candidate1_dissolved_isochrones'
+    }
+  });
+  var wms_layer_amsterdam_merged_isochrones_candidate1 = new ol.layer.Tile({
+    title: "merged_isochrones_candidate_1",
+    source: wms_source_amsterdam_merged_isochrones_candidate1
+
+  });
+
+  var wms_source_amsterdam_merged_isochrones_candidate2 = new ol.source.TileWMS({
+    url: 'http://localhost:8090/geoserver/Getir/wms',
+    params: {
+      'LAYERS': 'Getir:amsterdam_candidate2_dissolved_isochrones'
+    }
+  });
+  var wms_layer_amsterdam_merged_isochrones_candidate2 = new ol.layer.Tile({
+    title: "merged_isochrones_candidate_2",
+    source: wms_source_amsterdam_merged_isochrones_candidate2
+
+  });
+
+  var wms_source_amsterdam_merged_isochrones_candidate3 = new ol.source.TileWMS({
+    url: 'http://localhost:8090/geoserver/Getir/wms',
+    params: {
+      'LAYERS': 'Getir:amsterdam_candidate3_dissolved_isochrones'
+    }
+  });
+  var wms_layer_amsterdam_merged_isochrones_candidate3 = new ol.layer.Tile({
+    title: "merged_isochrones_candidate_3",
+    source: wms_source_amsterdam_merged_isochrones_candidate3
+
+  });
+
+
+  amsterdamGroup.getLayers().push(wms_layer_amsterdam_nufusyogunlugu);
+  amsterdamGroup.getLayers().push(wms_layer_amsterdam_osm_yollar);
+  amsterdamGroup.getLayers().push(wms_layer_amsterdam_merged_isochrones_candidate1);
+  amsterdamGroup.getLayers().push(wms_layer_amsterdam_merged_isochrones_candidate2);
+  amsterdamGroup.getLayers().push(wms_layer_amsterdam_merged_isochrones_candidate3);
+
+ //Amsterdam Marketler
+ const vectorSource_Amsterdam_MarketLocations = new ol.source.Vector({
+    format: new ol.format.GeoJSON(),
+    url: function (extent) {
+      return "http://localhost:8090/geoserver/Getir/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Getir%3Aamsterdam_markets&maxFeatures=50&outputFormat=application%2Fjson&srsname=EPSG:4326&"
+    },
+    strategy: ol.loadingstrategy.bboxStrategy,
+  });
+
+  const vector_Amsterdam_MarketLocations = new ol.layer.Vector({
+    title: 'amsterdam_market_locations',
+    source: vectorSource_Amsterdam_MarketLocations,
+    style:new ol.style.Style({
+      image: new ol.style.Circle({
+        radius: 7,
+        fill: new ol.style.Fill({color: 'red'}),
+        stroke: new ol.style.Stroke({
+          color: [255,0,0], width: 1
+        })
+      })
+    })
+  });
+
+  //Amsterdam Getir Locations
+  const vectorSource_Amsterdam_GetirLocations = new ol.source.Vector({
+    format: new ol.format.GeoJSON(),
+    url: function (extent) {
+      return "http://localhost:8090/geoserver/Getir/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Getir%3Agetir_amsterdam_service_locations&maxFeatures=50&outputFormat=application%2Fjson&srsname=EPSG:4326&"
+    },
+    strategy: ol.loadingstrategy.bboxStrategy,
+  });
+
+  const vector_Amsterdam_GetirLocations = new ol.layer.Vector({
+    title: 'amsterdam_getir_service_locations',
+    source: vectorSource_Amsterdam_GetirLocations,
+    style: function (feature, resolution) {
+      var text = resolution < 5000 ? feature.get('id') : '';
+      return new ol.style.Style({
+        text: new ol.style.Text({
+          scale: 1.5,
+          text: text,
+          fill: new ol.style.Fill({
+            color: '#3399CC'
+          }),
+          stroke: new ol.style.Stroke({
+            color: '#fff',
+            width: 7
+          })
+
+        })
+      });
+    }
+  });
+
+  //Amsterdam Cadidate Locations
+  const vectorSource_Amsterdam_CandidateLocations = new ol.source.Vector({
+    format: new ol.format.GeoJSON(),
+    url: function (extent) {
+      return "http://localhost:8090/geoserver/Getir/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Getir%3Aamsterdam_candidate_points_locations&maxFeatures=50&outputFormat=application%2Fjson&srsname=EPSG:4326&"
+    },
+    strategy: ol.loadingstrategy.bboxStrategy,
+  });
+
+  const vector_Amsterdam_GetirCandidateLocations = new ol.layer.Vector({
+    title: 'amsterdam_getir_candidate_locations',
+    source: vectorSource_Amsterdam_CandidateLocations,
+    style: function (feature, resolution) {
+      var text = resolution < 5000 ? feature.get('id') : '';
+      return new ol.style.Style({
+        text: new ol.style.Text({
+          scale: 1.5,
+          text: text,
+          fill: new ol.style.Fill({
+            color: 'red'
+          }),
+          stroke: new ol.style.Stroke({
+            color: '#fff',
+            width: 7
+          })
+
+        })
+      });
+    }
+  });
+
+  //Amsterdam Border
+  const vectorSource_Amsterdam_Border = new ol.source.Vector({
+    format: new ol.format.GeoJSON(),
+    url: function (extent) {
+      return "http://localhost:8090/geoserver/Getir/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=Getir%3Aamsterdam_border&maxFeatures=50&outputFormat=application%2Fjson&srsname=EPSG:4326&"
+    },
+    strategy: ol.loadingstrategy.bboxStrategy,
+  });
+
+  const vector_Amsterdam_Border = new ol.layer.Vector({
+    title: 'amsterdam_border',
+    source: vectorSource_Amsterdam_Border,
+    style: new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: 'rgba(0, 0, 255, 1.0)',
+        width: 2,
+      }),
+    }),
+  });
+
+  amsterdamGroup.getLayers().push(vector_Amsterdam_MarketLocations);
+  amsterdamGroup.getLayers().push(vector_Amsterdam_Border);
+  amsterdamGroup.getLayers().push(vector_Amsterdam_GetirCandidateLocations);
+  amsterdamGroup.getLayers().push(vector_Amsterdam_GetirLocations);
+  updateLegend(resolution, wms_source_amsterdam_nufusyogunlugu, 'legend_nufusyogunluk_amsterdam');
+
+
+  ///// Tooltip OverLaye for Vector Layers on Click
+  var overlayForUploadedFeatureLabelTooltipElement = document.getElementById('overlayForUploadedFeatureLabelTooltip');
+
+  var overlayForUploadedFeatureLabelTooltip = new ol.Overlay({
+    element: overlayForUploadedFeatureLabelTooltipElement,
+    id: 'overlayForUploadedFeatureLabelTooltip',
+    offset: [0, 0],
+    positioning: 'bottom-left'
+
+  });
+
+  map.addOverlay(overlayForUploadedFeatureLabelTooltip);
+
+  function displayTooltip(evt) {
+    var pixel = evt.pixel;
+    var clickedLayer;
+    var feature = map.forEachFeatureAtPixel(pixel, function (feature, layer) {
+      clickedLayer = layer;
+      return feature;
+    });
+
+    overlayForUploadedFeatureLabelTooltipElement.style.display = feature ? '' : 'none';
+    if (feature != undefined) {
+      var allPropertiesOfFeature = feature.getProperties();
+      var htmlTableforAllPropertiesOfFeature = obj2htmltable(allPropertiesOfFeature, clickedLayer)
+      console.log(htmlTableforAllPropertiesOfFeature);
+      if (htmlTableforAllPropertiesOfFeature != undefined) {
+        $(overlayForUploadedFeatureLabelTooltipElement).css({ "height": "" });// Eğer temizlenmez ise diğer objelerden sytle kalabiliyor
+        overlayForUploadedFeatureLabelTooltip.setPosition(evt.coordinate);
+        overlayForUploadedFeatureLabelTooltipElement.innerHTML = htmlTableforAllPropertiesOfFeature;
+        if ($(overlayForUploadedFeatureLabelTooltipElement).height() > 200) {
+          $(overlayForUploadedFeatureLabelTooltipElement).css({ "height": 200, "overflow": "auto" });
+        }
+
+      }
+    }
+  };
+  map.on('click', displayTooltip);
+
+
+   // Rename Button For Adana
+   $(".adana-zoom-extent >button").html('A');
+
 
 
 </script>
 
 <style>
-.adana-zoom-extent {
+  .adana-zoom-extent {
     bottom: 60px;
     left: 8px;
     position: absolute;
-}
+  }
 
-.map .ol-custom-overviewmap,
-.map .ol-custom-overviewmap.ol-uncollapsible {
+  .amsterdam-zoom-extent {
+    bottom: 100px;
+    left: 8px;
+    position: absolute;
+  }
+
+  .map .ol-custom-overviewmap,
+  .map .ol-custom-overviewmap.ol-uncollapsible {
     bottom: 0;
     left: auto;
     right: 0;
     top: auto;
-}
+  }
+
+  td {
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    border-left: 1px solid #000000;
+    border-right: 1px solid #000000
+  }
+
+  table.tableizer-table {
+    font-size: 14px;
+    border: 1px solid #CCC;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .tableizer-table td {
+    padding: 4px;
+    margin: 3px;
+    border: 1px solid #CCC;
+  }
+
+  .tableizer-table th {
+    background-color: #104E8B;
+    color: #FFF;
+    font-weight: bold;
+  }
 </style>

@@ -1,5 +1,6 @@
 # ignore config files
 config.js
+EkNotes.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
