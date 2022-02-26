@@ -28,4 +28,11 @@ backupfiles içerisinde geoserver data_dir dosyası ve postgis backup dosyası b
 
 2. PostGIS container'i oluştuktan sonra PGADMIN ile erişilip 'getirdb' adında database oluşturun ve backupfiles içindeki backup dosyasını restore yapınız. 
 
+
+
+(Not: javascript folder'i içerisinde bing key içeren config.js dosyası ve içerisine bing key içeren aşağıdaki obje eklenmelidir.)
+var config = { 
+    bingKey: "yourbingkey"
+}
+
 Bu işlemler sonrasında uygulama localhost:5000 üzerinde çalışıyor olacaktır. 
