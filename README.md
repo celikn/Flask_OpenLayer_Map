@@ -13,10 +13,10 @@ docker-compose ile container network oluşturma
 2. Her container'i kapsayan docker-compose.yml dosyası bulunmaktadır.
 
 3. "docker-compose build" komutu ile ilgili image dosyalarını oluşturunuz. 
-    - Build işlemi sırasında yaml dosyası içinde belirtilen volume varsa "docker volume create --name=volume-data"  komutunu uygulayınız.
+    - Build işlemi sırasında yaml dosyası içinde belirtilen volume varsa "docker volume create --name geoserver-data" komutunu uygulayınız.
 	 - Flask uygulamasının çalışabilmesi için app.py dosyası içinde host='0.0.0.0' olarak belirtilmiş olmalıdır.
 
-4. "docker-compose up"  komutu ile containerları çalıştır. 
+4. "docker-compose up"  komutu ile containerları çalıştırabilirsiniz. 
    "docker-compose down" ile containerları durdurabilirsiniz. 
    
 
