@@ -1,15 +1,32 @@
 Flask microservis ve OpenLayer Haritası 
 
-docker-compose ile container network oluşturma 
 
-1. Her container için Docker dosyasını oluştur.
+Uygulama Harita Görünümü
 
-2. Her container'i kapsayan docker-compose.yml dosyasını oluştur.
+<img src='/flask/static/images/Adana.png'>
 
-3. "docker-compose build" komutu ile ilgili image dosyalarını oluştur. 
-     - Build işlemi sırasında yaml dosyası içinde belirtilen volume varsa "docker volume create --name=volume-data"  komutunu uygula
-	 - Flask uygulamasının çalışabilmesi için app.py dosyası içinde host='0.0.0.0' olarak belirtilmiş olmalı. 
+<img src='/flask/static/images/Amsterdam.png'>
+
+
+docker-compose ile container network oluşturma
+
+1. Her container için Dockerfile dosyası bulunmaktadır.
+
+2. Her container'i kapsayan docker-compose.yml dosyası bulunmaktadır.
+
+3. "docker-compose build" komutu ile ilgili image dosyalarını oluşturun. 
+    - Build işlemi sırasında yaml dosyası içinde belirtilen volume varsa "docker volume create --name=volume-data"  komutunu uygulayın
+	 - Flask uygulamasının çalışabilmesi için app.py dosyası içinde host='0.0.0.0' olarak belirtilmiş olmalıdır.
 
 4. "docker-compose up"  komutu ile containerları çalıştır. 
    "docker-compose down" ile containerları durdurabilirsin. 
    
+
+
+backupfiles içerisinde geoserver data_dir dosyası ve postgis backup dosyası bulunmaktadır. 
+
+1. Geoserver container'i oluştuktan sonra ilgili container içindeki katman ve style'ler tutan data_dir dosyasının backupfiles içindeki ile değiştirilmesi gerekmektedir.
+
+  İlgili dosyayı unzip yapınız.  "docker cp container_id:/data_dir/.  /opt/geoserver/data_dir" komutu ile gerekli style ve katmanları kopyalayabilirsiniz.  
+
+2. PostGIS container'i oluştuktan sonra PGADMIN ile erişilip 'getirdb' adında database oluşturun ve backupfiles içindeki backup dosyasını restore yapınız. 
