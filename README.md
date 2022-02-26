@@ -30,7 +30,7 @@ backupfiles içerisinde geoserver data_dir dosyası ve postgis backup dosyası b
 
 
 
-(Not: javascript folder'i içerisinde bing key içeren config.js dosyası ve içerisine bing key içeren aşağıdaki obje eklenmelidir.)
+(Not: javascript folder'i içerisine bing key içeren config.js dosyası ve bu dosya içerisine de bing key içeren aşağıdaki obje eklenmelidir.)
 var config = { 
     bingKey: "yourbingkey"
 }
