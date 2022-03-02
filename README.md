@@ -13,7 +13,7 @@ docker-compose ile container network oluşturma
 2. Her container'i kapsayan docker-compose.yml dosyası bulunmaktadır.
 
 3. "docker-compose build" komutu ile ilgili image dosyalarını oluşturunuz. 
-   - Build işlemi sırasında yaml dosyası içinde belirtilen volume varsa "docker volume create --name=geoserver-data" komutunu uygulayınız. Eğer sistemde daha önceden eklemiş ilgili volume varsa  "docker volume prune" ile volume'leri siliniz. (Aksi halde ilgili veriler güncellenmemiş olacaktır. )
+   - Build işlemi sırasında yaml dosyası içinde belirtilen volume varsa "docker volume create --name=geoserver-data" ve "docker volume create --name=postgres_data_g" komutlarını uygulayınız. Eğer sistemde daha önceden eklemiş ilgili volume varsa  "docker volume prune" ile volume'leri siliniz. (Aksi halde ilgili veriler güncellenmemiş olacaktır. )
 	 - Flask uygulamasının çalışabilmesi için app.py dosyası içinde host='0.0.0.0' olarak belirtilmiş olmalıdır.
 
 4. "docker-compose up -d"  komutu ile containerları çalıştırabilirsiniz. 
