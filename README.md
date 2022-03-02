@@ -24,7 +24,7 @@ backupfiles içerisinde geoserver data_dir dosyası ve postgis backup dosyası b
 
 1. Geoserver container'i oluştuktan sonra ilgili container içindeki katman ve style'ler tutan data_dir dosyasının backupfiles içindeki ile değiştirilmesi gerekmektedir.
 
-  İlgili dosyayı unzip yapınız.  "docker cp container_id:/data_dir/.  /opt/geoserver/data_dir" komutu ile gerekli style ve katmanları kopyalayabilirsiniz.  
+  İlgili dosyayı unzip yapınız.  "docker cp data_dir/. container_id:/opt/geoserver/data_dir " komutu ile gerekli style ve katmanları kopyalayabilirsiniz.  
 
 2. PostGIS container'i oluştuktan sonra PGADMIN ile erişilip 'getirdb' adında database oluşturun ve backupfiles içindeki backup dosyasını restore yapınız. 
 
