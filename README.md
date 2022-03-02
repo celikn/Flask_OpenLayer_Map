@@ -32,7 +32,7 @@ var config = {
 
   İlgili dosyayı unzip yapınız ve geoserver folder'ı altına taşıyınız. Dockerfile içindeki kopyalama komutları data_dir içinden ilgili dosyaları container içerisine kopyalayacaktır. 
   
-  localhost'ta çalışan geoserver (http://localhost:8090/geoserver/web/) için ilgili datastore configurasyonlarının aşağıdaki gibi olduğundan emin olup yeniden kaydedin.  
+  localhost'ta çalışan geoserver (http://localhost:8090/geoserver/web/) için ilgili datastore configurasyonlarının aşağıdaki gibi olduğundan emin olup yeniden kaydedin (Enabled tıklı değilse, enabled yapınız.)  
 
   <img src='/flask/static/images/GeoServerStoreConnection.png'>
    
