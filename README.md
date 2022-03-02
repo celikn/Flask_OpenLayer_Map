@@ -16,7 +16,7 @@ docker-compose ile container network oluşturma
    - Build işlemi sırasında yaml dosyası içinde belirtilen volume varsa "docker volume create --name=geoserver-data" komutunu uygulayınız. Eğer sistemde daha önceden eklemiş ilgili volume varsa  "docker volume prune" ile volume'leri siliniz. (Aksi halde ilgili veriler güncellenmemiş olacaktır. )
 	 - Flask uygulamasının çalışabilmesi için app.py dosyası içinde host='0.0.0.0' olarak belirtilmiş olmalıdır.
 
-4. "docker-compose up"  komutu ile containerları çalıştırabilirsiniz. 
+4. "docker-compose up -d"  komutu ile containerları çalıştırabilirsiniz. 
    "docker-compose down" ile containerları durdurabilirsiniz. 
    
 backupfiles içerisinde geoserver data_dir dosyası ve postgis backup dosyası bulunmaktadır. 
