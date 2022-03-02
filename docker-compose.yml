@@ -36,23 +36,29 @@ services:
     environment:
       - GEOSERVER_ADMIN_PASSWORD=geoserver
       - GEOSERVER_ADMIN_USER=admin
+    links:
+      - postgis
 
   postgis:
-    build: ./postgis  
+    hostname: postgis
+    build: ./postgis 
     container_name: getir_db
     restart: on-failure
     expose:
       - 11117
     ports:
       - 11117:5432
-    #volumes:
-    #- ./postgres-db-data:/var/lib/postgresql/data
+    volumes:
+      - postgres_data_g:/var/lib/postgresql/data2/
     environment: 
       POSTGRES_USER: postgres #docker 
       POSTGRES_DB: postgres #template_postgis
       POSTGRES_PASSWORD: docker
- 
- 
+      ALLOW_IP_RANGE: '0.0.0.0/0'
+      POSTGRES_DBNAME: getirdb
+
 volumes:
   geoserver-data:
-    external: true 
+    external: true
+  postgres_data_g:
+    external: true
