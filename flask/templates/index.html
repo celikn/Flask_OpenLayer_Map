@@ -1,14 +1,27 @@
-<link rel="stylesheet" href="https://openlayers.org/en/v6.3.1/css/ol.css" type="text/css">
-<script src="https://openlayers.org/en/v6.3.1/build/ol.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.6.1/proj4.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- <link rel="stylesheet" href="https://openlayers.org/en/v6.3.1/css/ol.css" type="text/css"> -->
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/external/ol.css')}}">
+
+<!-- <script src="https://openlayers.org/en/v6.3.1/build/ol.js"></script> -->
+<script src="{{url_for('static', filename='javascript/external/ol.js')}}"></script>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.6.1/proj4.js"></script> -->
+<script src="{{url_for('static', filename='javascript/external/proj4.js')}}"></script>
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+<script src="{{url_for('static', filename='javascript/external/jquery.min.js')}}"></script>
 
 <!-- ol-layerswitcher -->
-<script src="https://unpkg.com/ol-layerswitcher@3.5.0"></script>
-<link rel="stylesheet" href="https://unpkg.com/ol-layerswitcher@3.5.0/src/ol-layerswitcher.css" />
+<!-- <script src="https://unpkg.com/ol-layerswitcher@3.5.0"></script> -->
+<script src="{{url_for('static', filename='javascript/external/ol-layerswitcher.js')}}"></script>
 
-<link href="https://unpkg.com/ol-geocoder/dist/ol-geocoder.min.css" rel="stylesheet">
-<script src="https://unpkg.com/ol-geocoder"></script>
+<!-- <link rel="stylesheet" href="https://unpkg.com/ol-layerswitcher@3.5.0/src/ol-layerswitcher.css" /> -->
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/external/ol-layerswitcher.css')}}">
+
+<!-- <link href="https://unpkg.com/ol-geocoder/dist/ol-geocoder.min.css" rel="stylesheet"> -->
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/external/ol-geocoder.min.css')}}">
+
+<!-- <script src="https://unpkg.com/ol-geocoder"></script> -->
+<script src="{{url_for('static', filename='javascript/external/ol-geocoder.js')}}"></script>
 
 <script src="{{url_for('static', filename='javascript/config.js')}}"></script>
 <script src="{{url_for('static', filename='javascript/helper.js')}}"></script>
@@ -246,8 +259,6 @@
   </div>
 
 </div>
-
-
 
 <script>
 
