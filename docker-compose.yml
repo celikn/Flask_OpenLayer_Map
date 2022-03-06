@@ -1,15 +1,15 @@
 version: "3.7"
 
 services:
-  # Define our individual services
+  # Servis adlarını tanımlıyoruz.
   flask:
-    # Build the flask service using the Dockerfile in the flask directory
+    # Build alacağı Dockerfile bulunan directory'i belirtiyoruz.
     build: ./flask
-    # Give our flask container a friendly name
+    # Container adını belirtiyoruz
     container_name: getir_flask
-    # Instruct Docker to always restart the service
+    # Servisin herzaman restart olmasını belirtiyoruz
     restart: always
-    # Use environment to set any environment variables
+    # container içindeki environment variable değerlerinde değişiklik yapıyoruz.
     environment:
       - APP_NAME= GetirApp
     # Any ports listed using `expose` will only be accessible to internal services/containers
@@ -20,19 +20,20 @@ services:
     command: python app.py 
   
   geoserver:
-    # Build the flask service using the Dockerfile in the flask directory
+    # Build alacağı Dockerfile bulunan directory'i belirtiyoruz.
     build: ./geoserver
-    # Give our flask container a friendly name
+    # Container adını belirtiyoruz
     container_name: getir_geoserver
-    # Instruct Docker to always restart the service
+    # Servisin herzaman restart olmasını belirtiyoruz
     restart: always
-    # Use environment to set any environment variables
+    # container verilerinin tutulduğu volume belirtiliyor
     volumes:
       - geoserver-data:/opt/geoserver/data_dir
     expose:
       - 8090
     ports:
       - "8090:8080"
+    # container içindeki environment variable değerlerinde değişiklik yapıyoruz.
     environment:
       - GEOSERVER_ADMIN_PASSWORD=geoserver
       - GEOSERVER_ADMIN_USER=admin
