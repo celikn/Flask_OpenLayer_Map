@@ -20,6 +20,7 @@ services:
     command: python app.py 
   
   geoserver:
+    ##platform: linux/arm64/v8 ## macbook m1 chip icin  belirtilmesi gerekiyor.
     # Build alacağı Dockerfile bulunan directory'i belirtiyoruz.
     build: ./geoserver
     # Container adını belirtiyoruz
@@ -36,7 +37,7 @@ services:
     # container içindeki environment variable değerlerinde değişiklik yapıyoruz.
     environment:
       - GEOSERVER_ADMIN_PASSWORD=geoserver
-      - GEOSERVER_ADMIN_USER=admin
+      - GEOSERVER_ADMIN_USER=admin  
     links:
       - postgis
 
