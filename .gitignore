@@ -149,4 +149,4 @@ dmypy.json
 cython_debug/
 
 ## geoserver data directory
-/data_dir
+data_dir/
